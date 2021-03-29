@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %} contact{% endblock %}
+{% block body %}
+ <h1> NOUS CONTACTER</h1>
+ <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+
+ {{ form(contactForm) }}
+ <script src="https://www.google.com/recaptcha/api.js?render=6LeU1Y4aAAAAAGG9mujukhK-8lJR6hM5Eo8z6h6_"></script>
+ <script>
+  grecaptcha.ready(function() {
+   grecaptcha.execute('6LeU1Y4aAAAAAGG9mujukhK-8lJR6hM5Eo8z6h6_', {action: 'homepage'}).then(function(token) {
+    document.getElementById('recaptchaResponse').value = token
+   });
+  });
+ </script>
+
+  {% endblock %}
