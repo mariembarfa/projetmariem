@@ -28,13 +28,27 @@ class ReservationRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()            ;
     }
+
+
+    public function countPriceByDest()
+    {
+        return $this->createQueryBuilder('p')
+           ->select('sum(p.prix) as totalPrice','p.destination as dest')
+            ->groupBy('p.destination')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */
 
 
 
-
+//return $this->createQueryBuilder('p')
+//->select('count(p.prix) as totalPrice','p.localisation as dest')
+//->groupBy('p.localisation')
+//->getQuery()
+//->getResult();
     /*
     public function findOneBySomeField($value): ?Reservation
     {

@@ -323,15 +323,23 @@
                 <main class="content-wrapper">
                     <div class="mdc-layout-grid">
                         <div class="mdc-layout-grid__inner">
+                            <div class="row">
                             <div id="div_chart"></div>
 
+
+                            <div id="div_chart2"></div>
+                            </div>
                             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                             <script type="text/javascript">
                                 {{ gc_draw(piechart, 'div_chart') }}
                             </script>
+                            <script type="text/javascript">
+                                {{ gc_draw(piechart, 'div_chart2') }}
+                            </script>
                         </div>
                     </div>
                 </main>
+
                 <!-- partial:../../partials/_footer.html -->
                 <footer>
                     <div class="mdc-layout-grid">
