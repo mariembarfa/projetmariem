@@ -5,13 +5,16 @@
  <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
 
  {{ form(contactForm) }}
- <script src="https://www.google.com/recaptcha/api.js?render=6LeU1Y4aAAAAAGG9mujukhK-8lJR6hM5Eo8z6h6_"></script>
+ <script src="https://www.google.com/recaptcha/api.js?render=6LcfHpUaAAAAALL6GIeOLvKFKbLBYvaRMHZV6VU6"></script>
  <script>
   grecaptcha.ready(function() {
-   grecaptcha.execute('6LeU1Y4aAAAAAGG9mujukhK-8lJR6hM5Eo8z6h6_', {action: 'homepage'}).then(function(token) {
+   grecaptcha.execute('6LcfHpUaAAAAALL6GIeOLvKFKbLBYvaRMHZV6VU6', {action: 'homepage'}).then(function(token) {
     document.getElementById('recaptchaResponse').value = token
    });
   });
  </script>
 
   {% endblock %}
+
+
+testx
