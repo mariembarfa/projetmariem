@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Location;
 use App\Form\LocationType;
 use App\Repository\LocationRepository;
+
+use Dompdf\Dompdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +25,38 @@ class LocationController extends AbstractController
         return $this->render('location/index.html.twig', [
             'locations' => $locationRepository->findAll(),
         ]);
+    }
+
+
+    /**
+     * @Route("/generatePdf", name="generatePdf", methods={"GET"})
+     */
+    public function generatePdf(LocationRepository $locationRepository): Response
+    {
+        // instantiate and use the dompdf class
+
+
+
+        $dompdf = new Dompdf();
+        $test = $this->renderView('location/table.html.twig', [
+            'locations' => $locationRepository->findAll(),
+        ]);
+        $dompdf->loadHtml($test);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+
+
+
+        return  $test;
+
+
     }
 
     /**
@@ -47,6 +81,9 @@ class LocationController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+
 
     /**
      * @Route("/{id}", name="location_show", methods={"GET"})
